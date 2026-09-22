@@ -1,131 +1,103 @@
-# ApexPlanet Data Analytics Internship
+# ApexPlanet Data Analytics Internship - Task 4
 
-## Task 1: Data Immersion & Wrangling
+## Data Storytelling & Statistical Validation
 
-### Objective
+This repository contains Task 4 of the ApexPlanet Data Analytics Internship.
 
-The objective of this task was to understand, assess, clean, transform, and validate the provided sales dataset to create an analysis-ready dataset.
+The objective of this task was to combine insights from the previous analytical tasks into a cohesive business story and validate key findings using statistical hypothesis testing.
 
-## Dataset
+## Task Objectives
 
-The original dataset contains 1,000 sales transaction records across 12 variables covering:
+- Synthesize insights from Tasks 1-3
+- Build a clear business narrative
+- Perform statistical hypothesis testing
+- Interpret p-values and confidence intervals
+- Create a stakeholder-focused presentation
+- Translate analytical findings into business recommendations
 
-- Orders
-- Customers
-- Customer demographics
-- Locations
-- Products
-- Categories
-- Quantities
-- Prices
-- Sales amounts
+## Hypothesis Testing
 
-## Data Quality Issues Identified
+### Test 1: High Value vs Medium Value Customers
 
-- 20 missing values in `Age`
-- 13 missing values in `City`
-- Eight incorrectly assigned `Order_ID` values
-- `Order_Date` stored as string data
-- High-value statistical outliers in `Total_Sales`
+**Null Hypothesis (H0):**  
+There is no statistically significant difference in average transaction value between High Value and Medium Value customers.
 
-No exact duplicate records, invalid numerical values, or sales calculation errors were identified.
+**Alternative Hypothesis (H1):**  
+There is a statistically significant difference in average transaction value between the two segments.
 
-## Data Cleaning Performed
+### Results
 
-- Corrected invalid order identifiers
-- Converted order dates to datetime
-- Imputed missing ages using median age
-- Replaced missing cities with `Unknown`
-- Standardized text fields
-- Validated transaction calculations
-- Retained legitimate high-value sales observations
+- High Value mean: 285,366.39
+- Medium Value mean: 115,524.68
+- Mean difference: 169,841.71
+- t-statistic: 26.73
+- p-value: 1.23 × 10^-85
+- 95% confidence interval: [157,341.67, 182,341.75]
 
-## Feature Engineering
+Since the p-value is below 0.05, the null hypothesis was rejected.
 
-The following analytical variables were created:
+This indicates a statistically significant difference in transaction value between the two customer segments.
 
-- `Order_Year`
-- `Order_Month`
-- `Order_Month_Name`
-- `Age_Group`
+---
 
-## Final Dataset
+### Test 2: Male vs Female Customers
 
-The cleaned dataset contains:
+**Null Hypothesis (H0):**  
+There is no statistically significant difference in average transaction value between male and female customers.
 
-- 1,000 transaction records
-- No missing values
-- No duplicate Order IDs
-- Valid dates
-- Valid numerical values
-- Consistent sales calculations
+**Alternative Hypothesis (H1):**  
+There is a statistically significant difference between the two groups.
+
+### Results
+
+- Male mean: 141,807.34
+- Female mean: 136,883.21
+- Mean difference: 4,924.13
+- t-statistic: 0.68
+- p-value: 0.495
+- 95% confidence interval: [-9,231.58, 19,079.85]
+
+Since the p-value is greater than 0.05, the null hypothesis was not rejected.
+
+There is insufficient statistical evidence to conclude that average transaction value differs by gender.
+
+## Key Business Findings
+
+- High-value customers contribute substantially more revenue than medium-value customers.
+- Gender alone does not appear to be a strong predictor of transaction value.
+- Customer segmentation provides stronger business value than demographic targeting based only on gender.
+- High-value customers should receive greater focus in retention and loyalty strategies.
+- Medium-value customers represent an opportunity for upselling and cross-selling.
+
+## Business Recommendations
+
+- Prioritize retention strategies for High Value customers
+- Develop upselling campaigns for Medium Value customers
+- Use customer value segmentation rather than gender-based targeting
+- Monitor high-performing product categories and geographic markets
+- Continue using statistical testing to validate major business decisions
 
 ## Tools Used
 
 - Python
 - Pandas
 - NumPy
+- SciPy
 - Matplotlib
+- Seaborn
 - Jupyter Notebook
-- Microsoft Excel
+- Looker Studio
+- PowerPoint
+- Git
+- GitHub
 
-## Project Structure
+## Repository Structure
 
 ```text
-intern_task1/
-├── data/
-│   ├── raw/
-│   └── cleaned/
-├── data_dictionary/
+ApexPlanet-Data-Analytics-Task-4/
 ├── notebooks/
-├── scripts/
-├── README.md
-└── requirements.txt
-
-## Task 2: Exploratory Data Analysis & Business Intelligence
-
-### Objective
-To analyze the cleaned sales dataset, identify meaningful business patterns and relationships, answer key business questions using SQL, and create a static dashboard summarizing the most important KPIs and trends.
-
-### Work Completed
-- Performed descriptive statistics on numerical and categorical variables
-- Created univariate visualizations for age, gender, product category, city, and sales distribution
-- Analyzed monthly revenue trends
-- Compared revenue across product categories, age groups, cities, and products
-- Performed multivariate analysis using scatter plots and box plots
-- Created a correlation heatmap for numerical variables
-- Executed 7 SQL business queries using SQLite
-- Exported SQL query results
-- Created a static Sales Performance Dashboard
-
-### Key Business Insights
-- Electronics was the highest-revenue category, generating approximately 50.78 million in sales
-- Customers aged 36–45 generated the highest total revenue
-- March 2025 recorded the highest monthly revenue at approximately 13.06 million
-- Unit Price and Quantity showed strong positive relationships with Total Sales
-- Patna, Kolkata, Bengaluru, and Mumbai were among the strongest cities by revenue
-- Laptop, Mobile, and Book were among the highest-revenue products
-
-### SQL Business Questions
-1. Which product categories generate the highest revenue?
-2. Which cities generate the highest revenue?
-3. What is the monthly revenue trend?
-4. Which age groups contribute the most revenue?
-5. What is the average order value by product category?
-6. Which products generate the highest revenue?
-7. Which customer segments generate the highest average transaction value?
-
-### Dashboard
-The Task 2 dashboard summarizes:
-- Total Revenue
-- Total Orders
-- Average Order Value
-- Total Quantity Sold
-- Top Product Category
-- Monthly Revenue Trend
-- Revenue by Category
-- Revenue by City
-- Revenue by Age Group
-- Top 5 Products by Revenue
-
-![Task 2 Dashboard](dashboard/task2_dashboard.png)
+│   └── task4_hypothesis_testing.ipynb
+├── presentation/
+│   └── Task4_Data_Storytelling_Statistical_Validation.pptx
+├── assets/
+└── README.md
